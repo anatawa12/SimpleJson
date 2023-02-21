@@ -4,6 +4,7 @@ SimpleJson
 A Simple, one-file, embeddable json parser / writer in C#.
 
 This project is intended for source-install, embed this project using git submodule & reference the cs file in your project.
+
 This project is intended to be used in unity project, so this uses C# 7.3 & netstandard2.0 for Unity 2019 compatibility.
 
 How to Use
