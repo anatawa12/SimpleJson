@@ -1,5 +1,6 @@
 ﻿/*
- * This is a part of https://github.com/anatawa12/VPMPackageAutoInstaller.
+ * This was a part of https://github.com/anatawa12/VPMPackageAutoInstaller.
+ * This is a part of https://github.com/anatawa12/SimpleJson.
  * 
  * MIT License
  * 
