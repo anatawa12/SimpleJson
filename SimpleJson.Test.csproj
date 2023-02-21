@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+    <!-- to avoid compiling tests in other project, we define this constant -->
+    <DefineConstants>$(DefineConstants);COM_ANATAWA12_SIMPLE_JSON_TEST_PROJECT</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

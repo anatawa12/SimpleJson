@@ -24,6 +24,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+// to avoid compiling tests in other project, we define this constant
+#if COM_ANATAWA12_SIMPLE_JSON_TEST_PROJECT
+
 using System;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -76,3 +80,4 @@ namespace Anatawa12.SimpleJson
         }
     }
 }
+#endif
