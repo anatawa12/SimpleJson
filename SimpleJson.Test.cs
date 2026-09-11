@@ -193,22 +193,12 @@ namespace Anatawa12.SimpleJson
         }
 
         [Test]
-        [Category("KnownBug")]
-        [Ignore("Known bug: NumericLiteral only checks for a lowercase 'e', so an uppercase 'E' " +
-                "exponent marker (valid per RFC 8259) is left unconsumed and causes a spurious " +
-                "parse error instead of being read as part of the number.")]
         public void UppercaseExponentIsRecognized()
         {
             Assert.That(new JsonParser("1E10").Parse(JsonType.Number), Is.EqualTo(1e10));
         }
 
         [Test]
-        [Category("KnownBug")]
-        [Ignore("Known bug: SkipIntegerLiteral's overflow guard protects a `long` accumulator " +
-                "that is never actually used for the parsed value (the value comes from " +
-                "double.TryParse on the substring). The guard fires on any run of ~19+ digit " +
-                "characters, including in the fractional part, even though the resulting double " +
-                "is well within range.")]
         public void LongFractionalPartDoesNotOverflow()
         {
             var digits = new string('1', 25);
@@ -218,10 +208,6 @@ namespace Anatawa12.SimpleJson
         }
 
         [Test]
-        [Category("KnownBug")]
-        [Ignore("Known bug: same overflow guard as above, but for a long run of integer-part " +
-                "digits. JSON allows arbitrarily long integer literals since the target type " +
-                "is double.")]
         public void LongIntegerLiteralDoesNotOverflow()
         {
             var digits = new string('9', 25);

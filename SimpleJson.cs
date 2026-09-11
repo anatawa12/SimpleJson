@@ -390,7 +390,7 @@ namespace Anatawa12.SimpleJson
                 c = SkipIntegerLiteral(GetMoveChar());
             }
 
-            if (c == 'e')
+            if (c == 'e' || c == 'E')
             {
                 if ((c = GetMoveChar()) == '+' || c == '-')
                     c = GetMoveChar();
@@ -407,14 +407,10 @@ namespace Anatawa12.SimpleJson
 
         private char SkipIntegerLiteral(char c)
         {
-            long integer = 0;
             while (true)
             {
                 if ('0' <= c && c <= '9')
                 {
-                    if (integer >= long.MaxValue / 10)
-                        throw new InvalidOperationException("invalid json: number too big");
-                    integer = integer * 10 + (c - '0');
                 }
                 else
                 {
