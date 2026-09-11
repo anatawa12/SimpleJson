@@ -323,9 +323,9 @@ namespace Anatawa12.SimpleJson
                             break;
                         case 'u':
                             c = (char)0;
-                            c |= (char)(HexChar() << 24);
-                            c |= (char)(HexChar() << 16);
+                            c |= (char)(HexChar() << 12);
                             c |= (char)(HexChar() << 8);
+                            c |= (char)(HexChar() << 4);
                             c |= (char)(HexChar() << 0);
                             builder.Append(c);
                             break;
@@ -460,7 +460,7 @@ namespace Anatawa12.SimpleJson
             {
                 if (c == '"') builder.Append("\\\"");
                 else if (c == '\\') builder.Append("\\\\");
-                else if (c < '\u0020') builder.Append($"'\\u{(int)c:x4}'");
+                else if (c < '\u0020') builder.Append($"\\u{(int)c:x4}");
                 else builder.Append(c);
             }
 

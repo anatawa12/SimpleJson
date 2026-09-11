@@ -44,6 +44,7 @@ namespace Anatawa12.SimpleJson
             yield return new TestCaseData("[]", new List<object>());
             yield return new TestCaseData(@"""simple""", "simple");
             yield return new TestCaseData(@"""\""\\""", "\"\\");
+            yield return new TestCaseData(@"""\u001a""", "\u001a");
             yield return new TestCaseData("0", 0.0);
             yield return new TestCaseData("1", 1.0);
             yield return new TestCaseData("0.5", 0.5);
