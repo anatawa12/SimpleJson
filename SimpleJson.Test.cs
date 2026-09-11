@@ -40,26 +40,27 @@ namespace Anatawa12.SimpleJson
         private static IEnumerable<TestCaseData> ParseAndSerializePairs()
         {
             // simple literals
-            yield return new TestCaseData("{}", new JsonObj());
-            yield return new TestCaseData("[]", new List<object>());
-            yield return new TestCaseData(@"""simple""", "simple");
-            yield return new TestCaseData(@"""\""\\""", "\"\\");
-            yield return new TestCaseData(@"""\u001a""", "\u001a");
-            yield return new TestCaseData("0", 0.0);
-            yield return new TestCaseData("1", 1.0);
-            yield return new TestCaseData("0.5", 0.5);
-            yield return new TestCaseData("-0.5", -0.5);
-            yield return new TestCaseData("2.3", 2.3);
-            yield return new TestCaseData("true", true);
-            yield return new TestCaseData("false", false);
-            yield return new TestCaseData("null", null);
+            yield return new TestCaseData("{}", new JsonObj(), null);
+            yield return new TestCaseData("[]", new List<object>(), null);
+            yield return new TestCaseData(@"""simple""", "simple", null);
+            yield return new TestCaseData(@"""\""\\""", "\"\\", null);
+            yield return new TestCaseData(@"""\u001a""", "\u001a", null);
+            yield return new TestCaseData("0", 0.0, null);
+            yield return new TestCaseData("1", 1.0, null);
+            yield return new TestCaseData("0.5", 0.5, null);
+            yield return new TestCaseData("-0.5", -0.5, null);
+            yield return new TestCaseData("2.3", 2.3, null);
+            yield return new TestCaseData("true", true, null);
+            yield return new TestCaseData("false", false, null);
+            yield return new TestCaseData("null", null, null);
             // lists
             yield return new TestCaseData(
                 "[\n"
                 + "  \"str\",\n"
                 + "  1,\n"
                 + "  false\n"
-                + "]", new List<object> { "str", 1.0, false });
+                + "]", new List<object> { "str", 1.0, false },
+                null);
 
             // objects
             yield return new TestCaseData(
@@ -70,14 +71,15 @@ namespace Anatawa12.SimpleJson
                 {
                     { "key1", "string" },
                     { "key2", 1.0 },
-                });
+                },
+                null);
         }
 
         [Test, TestCaseSource(nameof(ParseAndSerializePairs))]
-        public void ParseAndSerialize(String parse, object parsed)
+        public void ParseAndSerialize(String parse, object parsed, String serialized = null)
         {
             Assert.That(new JsonParser(parse).Parse(JsonType.Any), Is.EqualTo(parsed));
-            Assert.That(JsonWriter.Write(parsed), Is.EqualTo(parse));
+            Assert.That(JsonWriter.Write(parsed), Is.EqualTo(serialized ?? parse));
         }
     }
 }
